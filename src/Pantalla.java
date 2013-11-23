@@ -30,10 +30,15 @@ import javax.swing.undo.UndoManager;
 
 public class Pantalla extends javax.swing.JFrame {
 private boolean HaCambiado=false; //Bandera para saber si hay cambios en el archivo
+private File Archivo = null; //Archivo que maneja el editor para abrir y guardar
 private File ArchivoActual = null; //Archivo que maneja el editor para abrir y guardar
 private JLabel Ruta; //guarda la ruta del archivo
 private JLabel Tamaño; //Guarda el tamaño que adquiere el archivo 
 private UndoManager undoManager;            //instancia de UndoManager (administrador de edición)
+public JFileChooser fc = new JFileChooser(); 
+int state;
+
+
 
     public Pantalla() {
         initComponents();
@@ -224,6 +229,29 @@ this.Tamaño.setText(siz);}
     //Evento al precionar Abrir
     private void BAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAbrirActionPerformed
      SelectorArchivo();
+      if (state == JFileChooser.APPROVE_OPTION) {    //si elige abrir el archivo
+            Archivo = fc.getSelectedFile(); }   //obtiene el archivo seleccionado
+      
+      try {
+                //abre un flujo de datos desde el archivo seleccionado
+                BufferedReader br = new BufferedReader(new FileReader(Archivo));
+                //lee desde el flujo de datos hacia el area de edición
+                Texto.read(br, null);
+                br.close();    //cierra el flujo
+                
+                //nuevo título de la ventana con el nombre del archivo cargado
+                this.setTitle("Editor de Orlando - " + Archivo.getName());
+                
+                //establece el archivo cargado como el archivo actual
+                ArchivoActual=Archivo;
+                
+      } catch (IOException ex) {    //en caso de que ocurra una excepción
+                //presenta un dialogo modal con alguna información de la excepción
+                JOptionPane.showMessageDialog(this,
+                                              ex.getMessage(),
+                                              ex.toString(),
+                                              JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_BAbrirActionPerformed
 
     private void BGuardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGuardarCActionPerformed
@@ -241,12 +269,14 @@ public void SelectorArchivo(){
        }
    }; 
    
-        JFileChooser fc = new JFileChooser();                          //construye un JFileChooser
+                         //construye un JFileChooser
         fc.setDialogTitle("Editor de Orlando - Elige un archivo:");    //se le establece un título
         fc.setMultiSelectionEnabled(false);                            //desactiva la multi-selección
         fc.setFileFilter(textFileFilter);                              //aplica un filtro de extensiones
         
-        int state = fc.showOpenDialog(this);
+        state = fc.showOpenDialog(this);
+        
+       
         
 }
 
