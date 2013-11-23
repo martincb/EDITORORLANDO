@@ -139,7 +139,8 @@ public class TPEditor {
  
         jFrame.setJMenuBar(jMenuBar);                              //designa la barra de menú del JFrame
         Container c = jFrame.getContentPane();                     //obtiene el contendor principal
-        c.add(jToolBar, BorderLayout.NORTH);                       //añade la barra de herramientas, orientación NORTE del contendor
+      ///WWKDCJNSNDKCJSNKDCJSNC
+        c.add(jToolBar, BorderLayout.WEST);                       //añade la barra de herramientas, orientación NORTE del contendor
         c.add(new JScrollPane(jTextArea), BorderLayout.CENTER);    //añade el area de edición en el CENTRO
         c.add(statusBar, BorderLayout.SOUTH);                      //añade la barra de estado, orientación SUR
  
