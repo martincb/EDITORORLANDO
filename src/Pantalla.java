@@ -97,6 +97,8 @@ this.Tamaño.setText(siz);}
         BMCopiar = new javax.swing.JMenuItem();
         BMCortar = new javax.swing.JMenuItem();
         BMPegar = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        BMSeleccionarT = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -318,6 +320,16 @@ this.Tamaño.setText(siz);}
             }
         });
         jMenu2.add(BMPegar);
+        jMenu2.add(jSeparator6);
+
+        BMSeleccionarT.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        BMSeleccionarT.setText("Seleccionar Todo");
+        BMSeleccionarT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BMSeleccionarTActionPerformed(evt);
+            }
+        });
+        jMenu2.add(BMSeleccionarT);
 
         jMenuBar1.add(jMenu2);
 
@@ -457,6 +469,10 @@ this.Tamaño.setText(siz);}
     private void BMImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMImprimirActionPerformed
     imprimir(); 
     }//GEN-LAST:event_BMImprimirActionPerformed
+
+    private void BMSeleccionarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMSeleccionarTActionPerformed
+        Texto.selectAll();
+    }//GEN-LAST:event_BMSeleccionarTActionPerformed
 
     public void nuevo(){
          this.setTitle("TextPad Demo - Sin Título");    //nuevo título de la ventana
@@ -602,6 +618,7 @@ public void SelectorArchivo(){
     private javax.swing.JMenuItem BMImprimir;
     private javax.swing.JMenuItem BMPegar;
     private javax.swing.JMenuItem BMSalir;
+    private javax.swing.JMenuItem BMSeleccionarT;
     private javax.swing.JButton BNuevo;
     private javax.swing.JButton BPegar;
     private javax.swing.JToolBar BarraHerramientas;
@@ -619,6 +636,7 @@ public void SelectorArchivo(){
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     // End of variables declaration//GEN-END:variables
 
     
