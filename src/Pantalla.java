@@ -228,7 +228,8 @@ this.Tamaño.setText(siz);}
         });
         BarraHerramientas.add(BPegar);
 
-        Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tp_next.png"))); // NOI18N
+        Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tp_search.png"))); // NOI18N
+        Siguiente.setToolTipText("Buscar");
         Siguiente.setBorder(null);
         Siguiente.setFocusable(false);
         Siguiente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -343,7 +344,7 @@ this.Tamaño.setText(siz);}
     }// </editor-fold>//GEN-END:initComponents
 
     private void BNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNuevoActionPerformed
-        // TODO add your handling code here:
+    nuevo();
     }//GEN-LAST:event_BNuevoActionPerformed
 
     
@@ -456,7 +457,17 @@ this.Tamaño.setText(siz);}
     private void BMImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMImprimirActionPerformed
     imprimir(); 
     }//GEN-LAST:event_BMImprimirActionPerformed
-public void imprimir(){
+
+    public void nuevo(){
+         this.setTitle("TextPad Demo - Sin Título");    //nuevo título de la ventana
+        //limpia el contenido del area de edición
+        Texto.setText("");
+        //el archivo asociado al documento actual se establece como null
+        ArchivoActual=null;
+        //marca el estado del documento como no modificado
+    }
+    
+    public void imprimir(){
             boolean result = false;    //resultado de la impresión, por defecto es false
  
         //si el documento actual no esta vacío
